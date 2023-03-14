@@ -1,9 +1,9 @@
 <?php
 
 $dbhost='localhost'; 
-$dbname= 'content_calender';
+$dbname= 'mysql';
 $dbusername= 'root'; 
-$dbpass="";
+$dbpass="root";
 
-$mysqli=mysql_connect($dbhost, $dbusername,$dbpass,$dbname); |
+$mysqli=mysqli_connect($dbhost, $dbusername,$dbpass,$dbname); 
 ?>

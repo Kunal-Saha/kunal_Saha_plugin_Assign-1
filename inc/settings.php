@@ -1,4 +1,5 @@
 <?php
+include("config.php");
 function wpac_settings_page_html() {
     //Check if current user have admin access.
     if(!is_admin()) {
@@ -23,7 +24,7 @@ function wpac_settings_page_html() {
                 <tr>
                     <th>Author Name</th>
                     <!-- <td><input type="text" name="A_name"></td> -->
-                    <td><select type="text" name="A_name" id="admin" required></td>
+                    <td><select name="A_name" id="admin" required>
                     <?php
                     $users = get_users( array(
                         'fields' =>array( 'ID', 'display_name' )
@@ -32,28 +33,47 @@ function wpac_settings_page_html() {
                         echo '<option value="' . $user->ID . '">'. $user->display_name . '</option>';
                     }
                     ?>
-                </select> <br>
+                </select></td>
                 </tr>
                 <tr>
                     <th>Reviewer</th>
                     <!-- <td><input type="name" name="reviewer"></td> -->
-                    <td><select name="reviewer" id="reviewer" required></td>
-                <?php
-                $admins = get_users( array(
-                    'role'  => 'administrator',
-                    'fields'=> array( 'ID', 'display_name' )
-                ) );
+                    <td><select name="reviewer" id="reviewer" required>
+                    <?php
+                        $admins = get_users( array(
+                            'role'  => 'administrator',
+                            'fields'=> array( 'ID', 'display_name' )
+                        ) );
 
-                foreach( $admins as $admin ) {
-                    echo '<option value = "' . $admin->ID . '">' . $admin->display_name . '</option>';
-                }
-                ?>
-            </select> <br>
+                        foreach( $admins as $admin ) {
+                            echo '<option value = "' . $admin->ID . '">' . $admin->display_name . '</option>';
+                        }
+                    ?>
+                    </select></td>
                 </tr>
             </table>
             <br>
                 <button type="submit">Submit</button> <br>
             <br>
+            <?php
+                if(isset($_POST['submit']))
+                {
+                    $date=$_POST['myDate'];
+                    $Occa=$_POST['myOccasion'];
+                    $title=$_POST['myTitle'];
+                    $a_name=$_POST['A_name'];
+                    $r_name=$_POST['reviewer'];
+
+                    $res=mysqli_query($mysqli,"INSERT into record values('','$date','$Occa','$title','$a_name','$r_name')");
+
+                    if($res){
+                        echo "Successfully Inserted";
+                    }
+                    else{
+                        echo "Failed";
+                    }
+                }
+            ?>
         </div>
         <style>
             table {
