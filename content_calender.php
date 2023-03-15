@@ -15,31 +15,36 @@
  * Domain Path:       /languages
  */
 
-if (!defined( 'WPINC' )) {
+ if ( !defined( 'WPINC' ) ) {
     die;
 }
 
-//Define Constants
-if ( !defined('WPAC_PLUGIN_VERSION')) {
-    define('WPAC_PLUGIN_VERSION', '1.0.0');
-}
-if ( !defined('WPAC_PLUGIN_DIR')) {
-    define('WPAC_PLUGIN_DIR', plugin_dir_url( __FILE__ ));
+if ( !defined( 'CALENDAR_PLUGIN_VERSION' ) ) {
+    define( 'CALENDAR_PLUGIN_VERSION', '1.0.0' );
 }
 
-//Include Scripts & Styles
-if( !function_exists('wpac_plugin_scripts')) {
-    function wpac_plugin_scripts() {
-        wp_enqueue_style('wpac-css', plugin_dir_url( __FILE__ ). 'assets/css/style.css');
-        wp_enqueue_script('wpac-js', plugin_dir_url( __FILE__ ). 'assets/js/main.js', 'jQuery', '1.0.0', true );
-    }
-    add_action('wp_enqueue_scripts', 'wpac_plugin_scripts');
+if( !defined( 'CALENDAR_PLUGIN_DIR' ) ) {
+    define( 'CALENDAR_PLUGIN_DIR', plugin_dir_url( __FILE__ ) );
 }
 
+if( !defined( 'CALENDAR_PLUGIN_DIR_PATH' ) ) {
+    define( 'CALENDAR_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
+}
 
-require plugin_dir_path( __FILE__ ). 'inc/settings.php';
+// Enqueue Scripts
 
+require CALENDAR_PLUGIN_DIR_PATH  . 'scripts.php';
 
+// Adding Settings page of our plugin
 
+require CALENDAR_PLUGIN_DIR_PATH . 'inc/menu.php';
+
+// Adding Form to the page
+
+require CALENDAR_PLUGIN_DIR_PATH . 'inc/settings.php';
+
+// Create table
+
+require CALENDAR_PLUGIN_DIR_PATH . 'inc/db.php';
 
 ?>

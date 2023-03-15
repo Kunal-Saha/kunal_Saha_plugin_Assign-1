@@ -30,21 +30,21 @@ register_activation_hook( __FILE__, 'create_event_tables' );
 function form_submit() {
     global $wpdb;
 
-    if( isset( $_POST['date'] ) && isset( $_POST['occassion'] ) && isset( $_POST['post_title'] ) && isset( $_POST['author'] ) && isset( $_POST['reviewer'] ) ) {
+    if( isset( $_POST['myDate'] ) && isset( $_POST['myOccasion'] ) && isset( $_POST['myTitle'] ) && isset( $_POST['A_name'] ) && isset( $_POST['reviewer'] ) ) {
         $table_name = $wpdb->prefix . "events";
-        $date = sanitize_text_field( $_POST['date'] );
-        $occassion = sanitize_text_field( $_POST['occassion'] );
-        $post_title = sanitize_text_field( $_POST['post_title'] );
-        $author = sanitize_text_field( $_POST['author'] );
+        $date = sanitize_text_field( $_POST['myDate'] );
+        $occassion = sanitize_text_field( $_POST['myOccasion'] );
+        $post_title = sanitize_text_field( $_POST['myTitle'] );
+        $author = sanitize_text_field( $_POST['A_name'] );
         $reviewer = sanitize_text_field( $_POST['reviewer'] );
 
         $wpdb->insert(
             $table_name,
             array(
-                'date'       => $date,
-                'occassion'  => $occassion,
-                'post_title' => $post_title,
-                'author'     => $author,
+                'myDate'       => $myDate,
+                'myOccasion'  => $myOccasion,
+                'myTitle' => $myTitle,
+                'A_name'     => $A_name,
                 'reviewer'   => $reviewer
             )
         );
@@ -81,10 +81,10 @@ function print_schedule() {
     foreach ( $results as $row ) {
         echo '<tr>';
         echo '<td>' . $row->id . '</td>';
-		echo '<td>' . $row->date . '</td>';
-		echo '<td>' . $row->occassion . '</td>';
-		echo '<td>' . $row->post_title . '</td>';
-		echo '<td>' . get_userdata($row->author)->user_login . '</td>';
+		echo '<td>' . $row->myDate . '</td>';
+		echo '<td>' . $row->myOccasion . '</td>';
+		echo '<td>' . $row->myTitle . '</td>';
+		echo '<td>' . get_userdata($row->A_name)->user_login . '</td>';
 		echo '<td>' . get_userdata($row->reviewer)->user_login . '</td>';
 		echo '</tr>';
     }
@@ -105,10 +105,10 @@ function print_schedule() {
 	foreach ($data as $row) {
 		echo '<tr>';
 		echo '<td>' . $row->id . '</td>';
-		echo '<td>' . $row->date . '</td>';
-		echo '<td>' . $row->occassion . '</td>';
-		echo '<td>' . $row->post_title . '</td>';
-		echo '<td>' . (get_userdata($row->author) ? get_userdata($row->author)->user_login : 'N/A') . '</td>';
+		echo '<td>' . $row->myDate . '</td>';
+		echo '<td>' . $row->myOccasion . '</td>';
+		echo '<td>' . $row->myTitle . '</td>';
+		echo '<td>' . (get_userdata($row->A_name) ? get_userdata($row->A_name)->user_login : 'N/A') . '</td>';
         echo '<td>' . (get_userdata($row->reviewer) ? get_userdata($row->reviewer)->user_login : 'N/A') . '</td>';
 		echo '</tr>';
 	}
