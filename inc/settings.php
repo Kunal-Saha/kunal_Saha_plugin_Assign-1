@@ -7,22 +7,22 @@ function wpac_settings_page_html() {
     ?>
         <div class="wrap">
             <h1 style="padding:10px; background:#333;color:#fff"><?= esc_html(get_admin_page_title()); ?></h1>
+            <form method='post'>
             <table>
                 <tr>
-                    <th>DATE</th>
+                    <th><label for ="myDate">DATE</label></th>
                     <td><input type="Date" name="myDate"></td>
                 </tr>
                 <tr>
-                    <th>Occasion</th>
+                    <th><label for ="myOccasion">Occasion</label></th>
                     <td><input type="text" name="myOccasion"></td>
                 </tr>
                 <tr>
-                    <th>Post Title</th>
+                <th><label for ="myTitle">Post Title</label></th>
                     <td><input type="text" name="myTitle"></td>
                 </tr>
                 <tr>
-                    <th>Author Name</th>
-                    <!-- <td><input type="text" name="A_name"></td> -->
+                    <th><label for ="A_name">Author Name</label></th>
                     <td><select name="A_name" id="admin" required>
                     <?php
                     $users = get_users( array(
@@ -35,7 +35,7 @@ function wpac_settings_page_html() {
                 </select></td>
                 </tr>
                 <tr>
-                    <th>Reviewer</th>
+                    <th><label for ="reviewer">Reviewer</label></th>
                     <!-- <td><input type="name" name="reviewer"></td> -->
                     <td><select name="reviewer" id="reviewer" required>
                     <?php
@@ -52,8 +52,11 @@ function wpac_settings_page_html() {
                 </tr>
             </table>
             <br>
-                <button type="submit">Submit</button> <br>
+                <?php
+                    submit_button( "Schedule Post" );
+                ?>
             <br>
+            </form>
         </div>
         <style>
             table {
