@@ -42,7 +42,7 @@
 
 #upcoming-table th {
   background-color: #222222;
-  color: white;
+  color: rgb(107, 234, 119);
   text-transform: uppercase;
 }
 
@@ -53,7 +53,7 @@
 }
 
 #upcoming-table tr {
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #67ddec;
 }
 
 @media screen and (max-width: 600px) {
@@ -78,11 +78,11 @@
   }
 
   #upcoming-table td:first-child {
-    background-color: #222;
-    color: #fff;
+    background-color: #84e670;
+    color: #8ba3ec;
     text-align: center;
   }
-
+  
   #upcoming-table td:nth-child(2)::before {
     content: "Date";
   }
@@ -108,7 +108,7 @@
 
   #upcoming-table td::before {
     float: left;
-    margin-right: 10px;
+    margin-right: 20px;
     font-weight: bold;
   }
 }

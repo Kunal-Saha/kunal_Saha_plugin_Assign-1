@@ -6,7 +6,7 @@ function wpac_settings_page_html() {
     }
     ?>
         <div class="wrap">
-            <h1 style="padding:10px; background:#333;color:#fff"><?= esc_html(get_admin_page_title()); ?></h1>
+            <h1 class="header"><?= esc_html(get_admin_page_title()); ?></h1>
             <form method='post'>
             <table>
                 <tr>
@@ -59,19 +59,27 @@ function wpac_settings_page_html() {
             </form>
         </div>
         <style>
+            .header{
+                width: 1265px;
+                padding:10px; 
+                text-align: center;
+                background:#008080;
+                color: black;
+                font-weight: bold;
+            }
             table {
-                width: 100%;
+                width: 96%;
                 border-collapse: collapse;
-                font-size: 14px;
-                color: #333;
+                font-size: 16px;
+                color: blue;
             }
             th, td {
-                border: 1px solid #ccc;
-                padding: 8px;
+                border: 3px solid magenta;
+                padding: 10px;
                 text-align: left;
             }
             th {
-                background-color: #f2f2f2;
+                background-color: cyan;
             }
         </style>
     <?
