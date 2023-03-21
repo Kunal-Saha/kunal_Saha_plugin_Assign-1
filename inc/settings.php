@@ -60,7 +60,7 @@ function wpac_settings_page_html() {
         </div>
         <style>
             .header{
-                width: 1265px;
+                width: 96%;
                 padding:10px; 
                 text-align: center;
                 background:#008080;
